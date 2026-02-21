@@ -1,0 +1,12 @@
+services:
+  gmail-unsubscribe:
+    build: .
+    container_name: gmail-unsubscribe-mcp
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATA_DIR=/app/data
+      - MCP_PORT=8000
+    restart: unless-stopped

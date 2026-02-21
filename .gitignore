@@ -1,1 +1,8 @@
 project/credentials.json
+project/gmail_tools/data/credentials.json
+project/gmail_tools/data/token.json
+project/gmail_tools/data/whitelist.json
+__pycache__/
+*.pyc
+.venv/
+venv/
