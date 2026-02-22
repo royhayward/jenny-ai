@@ -39,18 +39,20 @@ cp /path/to/credentials.json data/
 
 ### 3. Build and Run
 
+Run from the project root (where `docker-compose.yml` is located):
+
 ```bash
 # Build the Docker image
 docker compose build
 
 # Run authentication (first time only)
-docker compose run --rm -p 8080:8080 gmail-unsubscribe python src/authenticate.py
+docker compose run --rm -p 8080:8080 email-service python src/authenticate.py
 
 # Start the MCP server
 docker compose up -d
 ```
 
-The authentication step will open a browser for Google OAuth consent. After authorizing, the token is saved to `data/token.json`.
+The authentication step will open a browser for Google OAuth consent. After authorizing, the token is saved to `email_service/data/token.json`.
 
 ## opencode Integration
 
@@ -59,7 +61,7 @@ Add to your opencode MCP configuration:
 ```json
 {
   "mcpServers": {
-    "gmail-unsubscribe": {
+    "email-service": {
       "url": "http://localhost:8000/sse"
     }
   }
@@ -71,10 +73,10 @@ Or if running locally without Docker:
 ```json
 {
   "mcpServers": {
-    "gmail-unsubscribe": {
+    "email-service": {
       "command": "python",
       "args": ["src/server.py"],
-      "cwd": "/path/to/gmail_tools"
+      "cwd": "/path/to/email_service"
     }
   }
 }

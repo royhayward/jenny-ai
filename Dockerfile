@@ -6,10 +6,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY src/requirements.txt .
+COPY email_service/src/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY src/ ./src/
+COPY email_service/src/ ./src/
 
 RUN mkdir -p /app/data
 

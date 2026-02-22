@@ -1,0 +1,11 @@
+services:
+  email-service:
+    build: .
+    container_name: email-service-mcp
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./email_service/data:/app/data
+    env_file:
+      - .env
+    restart: unless-stopped
